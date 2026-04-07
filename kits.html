@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Teclado + Mouse RGB | InfoTec Store</title>
+    <link type="image/png" href="img/icone.png" rel="shortcut icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- MENU -->
+    <nav>
+        <div class="logo">InfoTec</div>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#atendimento">Contato</a></li>
+        </ul>
+    </nav>
+    <!-- Produtos -->
+     <main>
+        <section class="destaque-pagina">
+            <div class="container">
+                <h1>Kit Teclado + Mouse RGB</h1>
+                <p>Combos com iluminação RGB, conforto e alta precisão para estudo, trabalho e games.</p>
+            </div>
+        </section>
+
+        <section class="produtos">
+            <div class="container">
+                <div class="grid-produtos">
+                    <article class="produto-card">
+                        <img src="img/kit_teclado.jpeg" alt="Kit Teclado e Mouse RGB Pro" />
+                        <h2>Kit Teclado + Mouse RGB Pro</h2>
+                        <ul>
+                            <li>Teclado ABNT2 com iluminação RGB</li>
+                            <li>Mouse 7200 DPI com 6 botões</li>
+                            <li>Fone de ouvido e mouse pad</li>
+                        </ul>
+                        <p class="preco">R$ 239,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+
+                    <article class="produto-card">
+                        <img src="img/teclado_mouse_rbg.jpg" alt="Kit Teclado e Mouse RGB Lite" />
+                        <h2>Kit Teclado + Mouse RGB Lite</h2>
+                        <ul>
+                            <li>Teclado compacto com LED RGB</li>
+                            <li>Mouse 4800 DPI com ajuste rápido</li>
+                            <li>Design ergonômico e silencioso</li>
+                        </ul>
+                        <p class="preco">R$ 159,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+
+                    <article class="produto-card">
+                        <img src="img/teclado_mouse_Wireless_rbg.jpg" alt="Kit Teclado e Mouse RGB Wireless" />
+                        <h2>Kit Teclado + Mouse RGB Wireless</h2>
+                        <ul>
+                            <li>Conexão sem fio 2.4GHz</li>
+                            <li>Bateria recarregável via USB-C</li>
+                            <li>Iluminação RGB com múltiplos modos</li>
+                        </ul>
+                        <p class="preco">R$ 299,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ATENDIMENTO -->
+    <section id="atendimento" class="atendimento">
+        <h2>Contato</h2>
+        <p>Email: atendimento@infotecstore.com.br</p>
+        <p>Instagram: @infotecstore</p>
+    </section>
+
+    <footer>
+        <p>2026 - InfoTec Store | Loja virtual de produtos de informatica</p>
+    </footer>
+</body>
+</html>
+<script>
+    const slides = document.querySelectorAll('.inicio-slides img');
+    const dots = document.querySelectorAll('.dot');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    
+    let index = 0;
+    let intervalo;
+
+    function mostrarSlide(i) {
+        slides.forEach(slide => slide.classList.remove('ativa'));
+        dots.forEach(dot => dot.classList.remove('ativo'));
+        slides[i].classList.add('ativa');
+        dots[i].classList.add('ativo');
+    }
+
+    function proximoSlide() {
+        index = (index + 1) % slides.length;
+        mostrarSlide(index);
+    }
+
+    function slideAnterior() {
+        index = (index - 1 + slides.length) % slides.length;
+        mostrarSlide(index);
+    }
+
+    next.addEventListener('click', proximoSlide);
+    prev.addEventListener('click', slideAnterior);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            index = i;
+            mostrarSlide(index);
+        });
+    });
+
+    function iniciarAuto() {
+        intervalo = setInterval(proximoSlide, 4000);
+    }
+
+    function pararAuto() {
+        clearInterval(intervalo);
+    }
+
+    document.querySelector('.inicio-carrossel').addEventListener('mouseenter', pararAuto);
+    document.querySelector('.inicio-carrossel').addEventListener('mouseleave', iniciarAuto);
+
+    iniciarAuto();
+</script>

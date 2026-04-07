@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTec Store</title>
+    <link type="image/png" href="img/icone.png" rel="shortcut icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- MENU -->
+    <nav>
+        <div class="logo">InfoTec</div>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#atendimento">Contato</a></li>
+        </ul>
+    </nav>
+    
+     <main> <!-- Produtos inicio -->
+        <section class="destaque-pagina">
+            <div class="container">
+                <h1>Armazenamento</h1>
+                <p>HD, SSD SATA e SSD NVMe com ótimo desempenho para jogos e trabalho.</p>
+            </div>
+        </section>
+
+        <section class="produtos">
+            <div class="container">
+                <div class="grid-produtos">
+                    <article class="produto-card">
+                        <img src="img/hd_seagate_1tb_1.jpeg" alt="HD 1TB 7200RPM" />
+                        <h2>HD Seagate 1TB 7200RPM</h2>
+                        <ul>
+                            <li>Capacidade: 1TB</li>
+                            <li>Interface: SATA III</li>
+                            <li>Cache: 64MB</li>
+                        </ul>
+                        <p class="preco">R$ 289,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+
+                    <article class="produto-card">
+                        <img src="img/ssd_kingston_400gb_1.jpeg" alt="SSD SATA 480GB" />
+                        <h2>SSD Kingston 480GB SATA</h2>
+                        <ul>
+                            <li>Capacidade: 480GB</li>
+                            <li>Leitura: até 500MB/s</li>
+                            <li>Interface: SATA III</li>
+                        </ul>
+                        <p class="preco">R$ 219,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+
+                    <article class="produto-card">
+                        <img src="img/nvme_wd_black.jpeg" alt="SSD NVMe 1TB PCIe 4.0" />
+                        <h2>SSD NVMe WD Black 1TB</h2>
+                        <ul>
+                            <li>Capacidade: 1TB</li>
+                            <li>Leitura: até 7000MB/s</li>
+                            <li>Interface: M.2 PCIe 4.0</li>
+                        </ul>
+                        <p class="preco">R$ 599,90</p>
+                        <button type="button">Adicionar ao carrinho</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main> <!-- Produtos fim -->
+
+    <!-- ATENDIMENTO -->
+    <section id="atendimento" class="atendimento">
+        <h2>Contato</h2>
+        <p>Email: atendimento@infotecstore.com.br</p>
+        <p>Instagram: @infotecstore</p>
+    </section>
+
+    <footer>
+        <p>2026 - InfoTec Store | Loja virtual de produtos de informatica</p>
+    </footer>
+</body>
+</html>
+<script>
+    const slides = document.querySelectorAll('.inicio-slides img');
+    const dots = document.querySelectorAll('.dot');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    
+    let index = 0;
+    let intervalo;
+
+    function mostrarSlide(i) {
+        slides.forEach(slide => slide.classList.remove('ativa'));
+        dots.forEach(dot => dot.classList.remove('ativo'));
+        slides[i].classList.add('ativa');
+        dots[i].classList.add('ativo');
+    }
+
+    function proximoSlide() {
+        index = (index + 1) % slides.length;
+        mostrarSlide(index);
+    }
+
+    function slideAnterior() {
+        index = (index - 1 + slides.length) % slides.length;
+        mostrarSlide(index);
+    }
+
+    next.addEventListener('click', proximoSlide);
+    prev.addEventListener('click', slideAnterior);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            index = i;
+            mostrarSlide(index);
+        });
+    });
+
+    function iniciarAuto() {
+        intervalo = setInterval(proximoSlide, 4000);
+    }
+
+    function pararAuto() {
+        clearInterval(intervalo);
+    }
+
+    document.querySelector('.inicio-carrossel').addEventListener('mouseenter', pararAuto);
+    document.querySelector('.inicio-carrossel').addEventListener('mouseleave', iniciarAuto);
+
+    iniciarAuto();
+</script>

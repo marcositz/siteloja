@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoTec Store</title>
+    <link type="image/png" href="img/icone.png" rel="shortcut icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- MENU -->
+    <nav>
+        <div class="logo">InfoTec</div>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#atendimento">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <!-- INICIO --> 
+    <section id="inicio" class="inicio-banner">
+     <div class="inicio-slides">
+        <div class="inicio-carrossel">
+            <img src="img/banner_notebooks1.jpg" class="ativa">
+                <img src="img/banner_ssd_hd1.jpg">
+                <img src="img/banner_teclado_mouse1.jpg">
+        </div>
+        <!--BOTÕES DE NAVEGAÇÃO-->
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <!--INDICADORES DE NAVEGAÇÃO-->
+        <div class="indicadores">
+                <span class="dot ativo"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+            <div class="inicio-conteudo">
+            <h1>InfoTec Store</h1>
+            <p>Loja virtual de produtos de informática</p>
+        </div>
+    </section>
+    
+    <!-- QUEM SOMOS -->
+        <section id="quem-somos" class="quem-somos">
+        <h2>Quem Somos</h2>
+        <p class="quem-somos-subtitulo">Equipe InfoTec Store</p>
+        <p>Somos uma loja especializada em tecnologia, com foco em qualidade, preço justo e entrega rápida para todo o Brasil.</p>
+    </section>
+
+    <!-- CATEGORIAS -->
+        <section id="categorias" class="categorias">
+        <h2>Categorias em Destaque</h2>
+        <ul>
+            <li><a href="notebooks.html" class="link-categoria">Notebooks</a></li>
+            <li><a href="kits.html" class="link-categoria">Periféricos</a></li>
+            <li><a href="armazenamento.html" class="link-categoria">Componentes</a></li>
+        </ul>
+    </section>
+
+    <!-- OFERTAS -->
+     <section id="ofertas" class="ofertas">
+        <h2>Ofertas da Semana</h2>
+        <div class="grid-produtos">
+            <div class="produto-card">
+                <img src="img/notbook_gamer_D_NQ_NP_2X.jpeg" alt="Notebook Gamer Nitro X" />
+                <h3>Notebook Gamer Nitro X</h3>
+                <p>Alto desempenho para jogos e produtividade com desconto especial.</p>
+                <a href="notebooks.html">Ver Produto</a>
+            </div>
+            <div class="produto-card">
+                <img src="img/kit_teclado.jpeg" alt="Kit Teclado e Mouse RGB" />
+                <h3>Kit Teclado + Mouse RGB</h3>
+                <p>Conforto e estilo para setup gamer com envio imediato.</p>
+                <a href="kits.html">Ver Produto</a>
+            </div>
+            <div class="produto-card">
+                <img src="img/nvme_wd_black.jpeg" alt="SSD NVMe 1TB" />
+                <h3>SSD NVMe 1TB</h3>
+                <p>Mais velocidade para seu PC com garantia de fábrica.</p>
+                <a href="armazenamento.html">Ver Produto</a>
+            </div>
+        </div>
+     </section>
+
+    <!-- ATENDIMENTO -->
+    <section id="atendimento" class="atendimento">
+        <h2>Contato</h2>
+        <p>Email: atendimento@infotecstore.com.br</p>
+        <p>Instagram: @infotecstore</p>
+    </section>
+
+    <footer>
+        <p>2026 - InfoTec Store | Loja virtual de produtos de informatica</p>
+    </footer>
+</body>
+</html>
+<script>
+    const slides = document.querySelectorAll('.inicio-slides img');
+    const dots = document.querySelectorAll('.dot');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    
+    let index = 0;
+    let intervalo;
+
+    function mostrarSlide(i) {
+        slides.forEach(slide => slide.classList.remove('ativa'));
+        dots.forEach(dot => dot.classList.remove('ativo'));
+        slides[i].classList.add('ativa');
+        dots[i].classList.add('ativo');
+    }
+
+    function proximoSlide() {
+        index = (index + 1) % slides.length;
+        mostrarSlide(index);
+    }
+
+    function slideAnterior() {
+        index = (index - 1 + slides.length) % slides.length;
+        mostrarSlide(index);
+    }
+
+    next.addEventListener('click', proximoSlide);
+    prev.addEventListener('click', slideAnterior);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            index = i;
+            mostrarSlide(index);
+        });
+    });
+
+    function iniciarAuto() {
+        intervalo = setInterval(proximoSlide, 4000);
+    }
+
+    function pararAuto() {
+        clearInterval(intervalo);
+    }
+
+    document.querySelector('.inicio-carrossel').addEventListener('mouseenter', pararAuto);
+    document.querySelector('.inicio-carrossel').addEventListener('mouseleave', iniciarAuto);
+
+    iniciarAuto();
+</script>
