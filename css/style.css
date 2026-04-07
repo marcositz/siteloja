@@ -227,6 +227,19 @@ footer {
     left: 0%;
 }
 
+.inicio-carrossel a {
+    position: absolute;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.inicio-carrossel a.ativa-link {
+    pointer-events: auto;
+    z-index: 2;
+}
+
 .inicio-carrossel img {
     position: absolute;
     width: 100%;

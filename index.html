@@ -24,9 +24,15 @@
     <section id="inicio" class="inicio-banner">
      <div class="inicio-slides">
         <div class="inicio-carrossel">
-            <img src="img/banner_notebooks1.jpg" class="ativa">
-                <img src="img/banner_ssd_hd1.jpg">
-                <img src="img/banner_teclado_mouse1.jpg">
+            <a href="notebooks.html" aria-label="Ver notebooks">
+                <img src="img/banner_notebooks1.jpg" class="ativa" alt="Banner de notebooks">
+            </a>
+            <a href="armazenamento.html" aria-label="Ver armazenamento">
+                <img src="img/banner_ssd_hd1.jpg" alt="Banner de armazenamento">
+            </a>
+            <a href="kits.html" aria-label="Ver periféricos">
+                <img src="img/banner_teclado_mouse1.jpg" alt="Banner de periféricos">
+            </a>
         </div>
         <!--BOTÕES DE NAVEGAÇÃO-->
             <button class="prev">&#10094;</button>
@@ -100,6 +106,7 @@
 </html>
 <script>
     const slides = document.querySelectorAll('.inicio-slides img');
+    const slideLinks = document.querySelectorAll('.inicio-carrossel a');
     const dots = document.querySelectorAll('.dot');
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
@@ -109,8 +116,10 @@
 
     function mostrarSlide(i) {
         slides.forEach(slide => slide.classList.remove('ativa'));
+        slideLinks.forEach(link => link.classList.remove('ativa-link'));
         dots.forEach(dot => dot.classList.remove('ativo'));
         slides[i].classList.add('ativa');
+        slideLinks[i].classList.add('ativa-link');
         dots[i].classList.add('ativo');
     }
 
@@ -142,6 +151,7 @@
         clearInterval(intervalo);
     }
 
+    mostrarSlide(index);
     document.querySelector('.inicio-carrossel').addEventListener('mouseenter', pararAuto);
     document.querySelector('.inicio-carrossel').addEventListener('mouseleave', iniciarAuto);
 
