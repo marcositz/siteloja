@@ -183,6 +183,19 @@ footer {
     margin-bottom: 15px;
 }
 
+/* LISTA DE ESPECIFICAÇÕES */
+.produto-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.produto-card li {
+    margin: 3px 0;
+    padding: 0;
+    font-size: 0.95rem;
+}
+
 /* LINK */
 .produto-card a {
     text-decoration: none;
