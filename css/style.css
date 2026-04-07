@@ -9,6 +9,11 @@ body {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
 }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
 /* MENU (NAVBAR) */
 nav {
     position: fixed;
@@ -46,6 +51,7 @@ nav a:hover{
 section {
     padding: 100px 20px;
     text-align: center;
+    scroll-margin-top: 85px;
 }
 /* SEÇÃO INÍCIO */
 .inicio-banner {
@@ -77,6 +83,7 @@ section {
 
 .categorias {
     padding-top: clamp(8px, 1.4vw, 14px);
+    scroll-margin-top: 85px;
 }
 
 .quem-somos h2,

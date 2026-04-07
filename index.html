@@ -110,6 +110,8 @@
     const dots = document.querySelectorAll('.dot');
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
+    const menu = document.querySelector('nav');
+    const menuLinks = document.querySelectorAll('nav a[href^="#"]');
     
     let index = 0;
     let intervalo;
@@ -150,6 +152,38 @@
     function pararAuto() {
         clearInterval(intervalo);
     }
+
+    function rolarComOffset(hash) {
+        const destino = document.querySelector(hash);
+        if (!destino) return;
+
+        const alvoVisual = destino.querySelector('h2') || destino;
+
+        const alturaMenu = menu ? menu.offsetHeight : 0;
+        const topo = alvoVisual.getBoundingClientRect().top + window.pageYOffset - alturaMenu - 12;
+
+        window.scrollTo({
+            top: topo,
+            behavior: 'smooth'
+        });
+    }
+
+    menuLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const hash = link.getAttribute('href');
+            if (!hash || hash === '#') return;
+
+            event.preventDefault();
+            history.pushState(null, '', hash);
+            rolarComOffset(hash);
+        });
+    });
+
+    window.addEventListener('load', () => {
+        if (window.location.hash) {
+            rolarComOffset(window.location.hash);
+        }
+    });
 
     mostrarSlide(index);
     document.querySelector('.inicio-carrossel').addEventListener('mouseenter', pararAuto);
