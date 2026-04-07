@@ -65,7 +65,7 @@ section {
     border-radius: 50%;
     margin: 15px 0;
 }
-
+/* QUEM SOMOS E CATEGORIAS */
 .quem-somos,
 .categorias {
     padding: clamp(40px, 5vw, 58px) 20px;
@@ -83,7 +83,7 @@ section {
 .categorias h2 {
     margin-bottom: 6px;
 }
-
+/* SUBTÍTULO DA SEÇÃO QUEM SOMOS */
 .quem-somos-subtitulo {
     margin-bottom: 10px;
     font-size: 1.15rem;
@@ -258,13 +258,30 @@ footer {
 }
 /* CONTEINER POR CIMA */
 .inicio-conteudo {
-    position: relative;
-    z-index: 1;
-    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 6px;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.26);
+    text-align: center;
+}
+
+.inicio-conteudo h1,
+.inicio-conteudo p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.inicio-conteudo h1 {
+    line-height: 1.1;
+}
+
+.inicio-conteudo p {
+    line-height: 1.35;
 }
 /* SLIDES */
 .inicio-slides img {
@@ -281,13 +298,14 @@ footer {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 30px;
-    background: #383838;
+    font-size: 22px;
+    background: rgba(56, 56, 56, 0.45);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 7px 8px;
     cursor: pointer;
-    z-index: 3;
+    z-index: 5;
+    border-radius: 8px;
 }
 .prev {
     left: 20px;
@@ -297,7 +315,7 @@ footer {
 }
 
 .prev:hover, .next:hover {
-    background: rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 0.7);
 }
 /* INDICADORES DE NAVEGAÇÃO */
 .indicadores {
@@ -305,7 +323,7 @@ footer {
     bottom: 20px;
     width: 100%;
     text-align: center;
-    z-index: 3;
+    z-index: 5;
 }
 .dot {
     height: 12px;
